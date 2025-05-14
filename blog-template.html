@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post Title - Rahul Agarwal</title>
+  <!-- Google Fonts - Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Additional Blog Post Styling -->
+  <style>
+    .blog-post-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--bg-white);
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .blog-post-header {
+      margin-bottom: 2rem;
+    }
+    
+    .blog-post-title {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .blog-post-meta {
+      display: flex;
+      align-items: center;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .blog-post-date {
+      margin-right: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .blog-post-date svg {
+      margin-right: 0.3rem;
+    }
+    
+    .blog-post-content {
+      line-height: 1.8;
+    }
+    
+    .blog-post-content p,
+    .blog-post-content ul,
+    .blog-post-content ol {
+      margin-bottom: 1.5rem;
+    }
+    
+    .blog-post-content h2 {
+      font-size: 1.7rem;
+      margin: 2.5rem 0 1rem;
+      color: var(--primary-color);
+    }
+    
+    .blog-post-content h3 {
+      font-size: 1.4rem;
+      margin: 2rem 0 1rem;
+      color: var(--secondary-color);
+    }
+    
+    .blog-post-content pre {
+      background: #f5f7f9;
+      border-radius: 5px;
+      padding: 1rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    
+    .blog-post-content code {
+      font-family: monospace;
+    }
+    
+    .blog-post-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin: 1.5rem 0;
+    }
+    
+    .blog-post-content blockquote {
+      border-left: 4px solid var(--accent-color);
+      padding-left: 1rem;
+      margin-left: 0;
+      color: var(--text-light);
+      font-style: italic;
+    }
+    
+    .back-to-blogs {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 2rem;
+      color: var(--accent-color);
+      font-weight: 500;
+    }
+    
+    .back-to-blogs svg {
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <h1>Rahul Agarwal</h1>
+      <p class="subtitle">Software Developer &amp; Machine Learning Enthusiast</p>
+      <nav>
+        <a href="index.html">About</a>
+        <a href="blogs.html" class="active">Blogs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="blog-post-container">
+      <!-- Back to blogs link -->
+      <a href="blogs.html" class="back-to-blogs">
+        <i data-feather="arrow-left"></i> Back to all blogs
+      </a>
+      
+      <!-- Blog header -->
+      <header class="blog-post-header">
+        <h1 class="blog-post-title">Understanding Stochastic Gradient Descent</h1>
+        <div class="blog-post-meta">
+          <div class="blog-post-date">
+            <i data-feather="calendar"></i>
+            <span>May 15, 2023</span>
+          </div>
+          <div class="blog-post-tags">
+            <span>Machine Learning</span>
+            <span>Neural Networks</span>
+            <span>Optimization</span>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Blog content -->
+      <div class="blog-post-content">
+        <!-- Introduction -->
+        <p>
+          Stochastic Gradient Descent (SGD) is one of the most important algorithms in machine learning,
+          particularly for training neural networks. In this post, we'll explore how SGD works, why it's 
+          so effective, and how you can implement it in your own projects.
+        </p>
+        
+        <!-- Main content sections -->
+        <h2>What is Gradient Descent?</h2>
+        <p>
+          Gradient descent is an optimization algorithm used to minimize a function by iteratively moving
+          in the direction of the steepest descent as defined by the negative of the gradient. In machine learning,
+          we use it to minimize the loss function of our models.
+        </p>
+        
+        <h2>The "Stochastic" in SGD</h2>
+        <p>
+          While traditional gradient descent computes the gradient using the entire dataset, stochastic gradient
+          descent approximates the gradient using a single sample or a small batch. This makes the algorithm:
+        </p>
+        <ul>
+          <li>Faster per iteration</li>
+          <li>Able to escape some local minima</li>
+          <li>Suitable for online learning scenarios</li>
+          <li>More memory-efficient for large datasets</li>
+        </ul>
+        
+        <h2>Implementing SGD in Python</h2>
+        <p>
+          Here's a simple implementation of SGD in Python using NumPy:
+        </p>
+        <pre><code>
+import numpy as np
+
+def sgd_optimizer(X, y, model, learning_rate=0.01, epochs=100, batch_size=32):
+    losses = []
+    n_samples = X.shape[0]
+    
+    for epoch in range(epochs):
+        # Shuffle the data
+        indices = np.random.permutation(n_samples)
+        X_shuffled = X[indices]
+        y_shuffled = y[indices]
+        
+        # Batch processing
+        for i in range(0, n_samples, batch_size):
+            X_batch = X_shuffled[i:i+batch_size]
+            y_batch = y_shuffled[i:i+batch_size]
+            
+            # Compute gradients
+            gradients = model.compute_gradients(X_batch, y_batch)
+            
+            # Update weights
+            model.update_weights(gradients, learning_rate)
+            
+        # Compute loss for the entire dataset
+        current_loss = model.compute_loss(X, y)
+        losses.append(current_loss)
+        
+        print(f"Epoch {epoch+1}/{epochs}, Loss: {current_loss:.4f}")
+    
+    return losses
+        </code></pre>
+        
+        <h2>Variants of SGD</h2>
+        <p>
+          There are several variants of SGD that aim to improve its performance:
+        </p>
+        <h3>SGD with Momentum</h3>
+        <p>
+          Momentum helps accelerate SGD in the relevant direction and dampens oscillations.
+          It does this by adding a fraction of the previous update vector to the current update vector.
+        </p>
+        
+        <h3>Adagrad, RMSprop, and Adam</h3>
+        <p>
+          These optimizers adapt the learning rate for each parameter, which can be particularly
+          useful when dealing with sparse features or when different parameters require different learning rates.
+        </p>
+        
+        <h2>Conclusion</h2>
+        <p>
+          Stochastic Gradient Descent is a cornerstone algorithm in modern machine learning.
+          By understanding how it works and its variants, you can improve the training of your models
+          and tackle more complex problems. In future posts, we'll dive deeper into specific applications
+          and advanced techniques for optimization.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Rahul Agarwal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Initialize Feather icons
+    feather.replace();
+  </script>
+</body>
+</html>
