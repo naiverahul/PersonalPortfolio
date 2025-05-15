@@ -94,8 +94,8 @@
   <header class="site-header">
     <div class="header-content">
       <h1>Rahul Agarwal</h1>
-      <p class="subtitle">Software Developer &amp; Machine Learning Enthusiast</p>
-      <p class="college-info">Indraprastha Institute of Information Technology, Delhi</p>
+      <p class="subtitle">Reading once a day keeps ChatGPT away</p>
+      <p class="college-info">IIIT, Delhi</p>
       <nav>
         <a href="index.html">About</a>
         <a href="blogs.html" class="active">Blogs</a>
@@ -114,7 +114,7 @@
       <div class="post-list">
         <article class="post">
           <div class="post-date">
-            <span>May 15, 2023</span>
+            <span>April 15, 2025</span>
           </div>
           <h3>Understanding Stochastic Gradient Descent</h3>
           <p>An intuitive guide to SGD and its applications in machine learning. Learn how this optimization algorithm helps train neural networks efficiently.</p>
@@ -128,7 +128,7 @@
         
         <article class="post">
           <div class="post-date">
-            <span>April 28, 2023</span>
+            <span>April 28, 2025</span>
           </div>
           <h3>Building a Simple Maze-Solving Robot</h3>
           <p>Step-by-step walkthrough of robot logic and PID control algorithms. I cover everything from sensor integration to implementing the control loop for smooth navigation.</p>
@@ -142,7 +142,7 @@
         
         <article class="post">
           <div class="post-date">
-            <span>March 12, 2023</span>
+            <span>March 12, 2025</span>
           </div>
           <h3>Getting Started with libGDX</h3>
           <p>How to set up your first Angry Birds-like game using Java and libGDX. This tutorial covers project setup, physics implementation, and game mechanics fundamentals.</p>
@@ -156,7 +156,7 @@
         
         <article class="post">
           <div class="post-date">
-            <span>February 5, 2023</span>
+            <span>February 5, 2025</span>
           </div>
           <h3>Python Data Structures Explained</h3>
           <p>An in-depth look at Python's built-in data structures and when to use each one. Improve your code efficiency by choosing the right structure for your needs.</p>
@@ -166,6 +166,21 @@
             <span>Performance</span>
           </div>
           <a href="#" class="read-more" data-post="post-4">Read more <i data-feather="arrow-right"></i></a>
+        </article>
+
+
+          <article class="post">
+          <div class="post-date">
+            <span>May 5, 2025</span>
+          </div>
+          <h3>Heap Data Structure in C++</h3>
+          <p>Heap data structure is one of the most popular data structure in market. It leverages the properties of Complete binary tree and maintain data in a sorted way.  </p>
+          <div class="post-tags">
+            <span>C++</span>
+            <span>Data Structures</span>
+            <span>Interview</span>
+          </div>
+          <a href="#" class="read-more" data-post="post-5">Read more <i data-feather="arrow-right"></i></a>
         </article>
       </div>
     </section>
@@ -180,7 +195,7 @@
       <div class="blog-post-meta">
         <div class="post-date">
           <i data-feather="calendar"></i>
-          <span>May 15, 2023</span>
+          <span>April 15, 2025</span>
         </div>
         <div class="post-tags">
           <span>Machine Learning</span>
@@ -270,7 +285,7 @@ def sgd_optimizer(X, y, model, learning_rate=0.01, epochs=100, batch_size=32):
       <div class="blog-post-meta">
         <div class="post-date">
           <i data-feather="calendar"></i>
-          <span>April 28, 2023</span>
+          <span>April 28, 2025</span>
         </div>
         <div class="post-tags">
           <span>Robotics</span>
@@ -372,7 +387,7 @@ double pidControl(double error) {
       <div class="blog-post-meta">
         <div class="post-date">
           <i data-feather="calendar"></i>
-          <span>March 12, 2023</span>
+          <span>March 12, 2025</span>
         </div>
         <div class="post-tags">
           <span>Game Development</span>
@@ -501,7 +516,7 @@ public boolean touchUp(int screenX, int screenY, int pointer, int button) {
       <div class="blog-post-meta">
         <div class="post-date">
           <i data-feather="calendar"></i>
-          <span>February 5, 2023</span>
+          <span>February 5, 2025</span>
         </div>
         <div class="post-tags">
           <span>Python</span>
@@ -583,11 +598,119 @@ public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         </p>
       </div>
     </section>
+      <section class="blog-post" id="post-5">
+          <a class="back-to-posts">
+              <i data-feather="arrow-left"></i> Back to all posts
+          </a>
+
+          <h1 class="blog-post-title">Understanding Heaps in Data Structures</h1>
+          <div class="blog-post-meta">
+              <div class="post-date">
+                  <i data-feather="calendar"></i>
+                  <span>May 15, 2025</span>
+              </div>
+              <div class="post-tags">
+                  <span>Data Structures</span>
+                  <span>Algorithms</span>
+                  <span>Heaps</span>
+              </div>
+          </div>
+
+          <div class="blog-post-content">
+              <p>
+                  A <strong>heap</strong> is a specialized binary tree-based data structure that maintains two key properties: <em>shape</em> and <em>heap order</em>. In a <strong>max-heap</strong>, every parent node’s value is greater than or equal to its children, whereas in a <strong>min-heap</strong>, every parent’s value is less than or equal to its children. The heap is also a <em>complete</em> binary tree, with all levels fully filled except possibly the last, which is populated from left to right.
+              </p>
+
+              <h2>Array Representation</h2>
+              <p>
+                  Heaps are most efficiently implemented using arrays. With 1-based indexing, the root resides at index <code>1</code>, and for any node at index <code>i</code>:
+              </p>
+              <ul>
+                  <li>Parent index: <code>floor(i / 2)</code></li>
+                  <li>Left child index: <code>2 * i</code></li>
+                  <li>Right child index: <code>2 * i + 1</code></li>
+                  <li>Leaf nodes span indices <code>floor(n/2) + 1</code> to <code>n</code> for a heap of size <code>n</code>.</li>
+              </ul>
+
+              <h2>Insertion</h2>
+              <p>
+                  To insert a new element:
+              </p>
+              <ol>
+                  <li>Append it at the end of the array (increase heap size by 1).</li>
+                  <li>“Bubble up” the element: while it violates the heap-order with its parent, swap it up.</li>
+              </ol>
+              <pre><code class="language-cpp">void insert(int val) {
+    size++;
+    int i = size;
+    arr[i] = val;
+    while (i > 1 && arr[i/2] < arr[i]) {
+        swap(arr[i], arr[i/2]);
+        i /= 2;
+    }
+}</code></pre>
+
+              <h2>Deletion (Extract-Max / Extract-Min)</h2>
+              <p>
+                  Removing the root (the maximum in a max-heap or minimum in a min-heap) involves:
+              </p>
+              <ol>
+                  <li>Swap the root with the last element and decrease heap size.</li>
+                  <li>“Heapify down” from the root: swap with the larger (or smaller) child until order is restored.</li>
+              </ol>
+              <pre><code class="language-cpp">int extractMax() {
+    if (size == 0) throw;
+    int root = arr[1];
+    arr[1] = arr[size--];
+    heapify(1);
+    return root;
+}
+
+void heapify(int i) {
+    int largest = i;
+    int l = 2*i, r = 2*i + 1;
+    if (l <= size && arr[l] > arr[largest]) largest = l;
+    if (r <= size && arr[r] > arr[largest]) largest = r;
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+        heapify(largest);
+    }
+}</code></pre>
+
+              <h2>Building a Heap</h2>
+              <p>
+                  To transform an arbitrary array into a heap in <strong>O(n)</strong> time, call <code>heapify</code> in reverse level order:
+              </p>
+              <pre><code class="language-cpp">for (int i = n/2; i >= 1; --i) {
+    heapify(i);
+}</code></pre>
+
+              <h2>Heap Sort</h2>
+              <p>
+                  Heap sort leverages the heap structure to sort in place:
+              </p>
+              <ol>
+                  <li>Build a max-heap (O(n)).</li>
+                  <li>Swap the root with the last element, reduce heap size, and heapify the root (repeat n–1 times).</li>
+              </ol>
+              <p>Overall time complexity: <strong>O(n log n)</strong>.</p>
+
+              <h2>C++ STL <code>priority_queue</code></h2>
+              <p>
+                  The STL provides <code>priority_queue</code> as a max-heap by default. Use <code>greater&lt;T&gt;</code> for min-heap behavior.
+              </p>
+              <pre><code class="language-cpp">#include &lt;queue&gt;
+priority_queue&lt;int&gt; pq;              // max-heap
+priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; minpq; // min-heap
+</code></pre>
+          </div>
+      </section>
+
   </main>
 
   <footer>
     <div class="container">
-      <p>&copy; 2023 Rahul Agarwal. All rights reserved.</p>
+      <p>&copy; 2025 Rahul Agarwal. All rights reserved.</p>
     </div>
   </footer>
 
