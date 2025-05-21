@@ -112,21 +112,24 @@
       </div>
       
       <div class="post-list">
-        <article class="post">
-          <div class="post-date">
-            <span>April 15, 2025</span>
-          </div>
-          <h3>Understanding Stochastic Gradient Descent</h3>
-          <p>An intuitive guide to SGD and its applications in machine learning. Learn how this optimization algorithm helps train neural networks efficiently.</p>
-          <div class="post-tags">
-            <span>Machine Learning</span>
-            <span>Neural Networks</span>
-            <span>Optimization</span>
-          </div>
-          <a href="#" class="read-more" data-post="post-1">Read more <i data-feather="arrow-right"></i></a>
-        </article>
-        
-        <article class="post">
+
+          <article class="post">
+              <div class="post-date">
+                  <span>May 22, 2025</span>
+              </div>
+              <h3>The Type-C of AI</h3>
+              <p>MCP servers are like your AI’s favorite Type-C port—fast, universal, and always ready to plug into the right API for answers on demand.</p>
+              <div class="post-tags">
+                  <span>MCP Servers</span>
+                  <span>LLM Integration</span>
+                  <span>AI Infrastructure</span>
+              </div>
+              <a href="#" class="read-more" data-post="post-1">Read more <i data-feather="arrow-right"></i></a>
+          </article>
+
+
+
+          <article class="post">
           <div class="post-date">
             <span>April 28, 2025</span>
           </div>
@@ -199,101 +202,104 @@
               </a>
           </article>
 
+          <article class="post">
+              <div class="post-date">
+                  <span>April 15, 2025</span>
+              </div>
+              <h3>Understanding Stochastic Gradient Descent</h3>
+              <p>An intuitive guide to SGD and its applications in machine learning. Learn how this optimization algorithm helps train neural networks efficiently.</p>
+              <div class="post-tags">
+                  <span>Machine Learning</span>
+                  <span>Neural Networks</span>
+                  <span>Optimization</span>
+              </div>
+              <a href="#" class="read-more" data-post="post-7">Read more <i data-feather="arrow-right"></i></a>
+          </article>
+
       </div>
     </section>
     
     <!-- Individual blog posts (initially hidden) -->
-    <section class="blog-post" id="post-1">
-      <a class="back-to-posts">
-        <i data-feather="arrow-left"></i> Back to all posts
-      </a>
-      
-      <h1 class="blog-post-title">Understanding Stochastic Gradient Descent</h1>
-      <div class="blog-post-meta">
-        <div class="post-date">
-          <i data-feather="calendar"></i>
-          <span>April 15, 2025</span>
-        </div>
-        <div class="post-tags">
-          <span>Machine Learning</span>
-          <span>Neural Networks</span>
-          <span>Optimization</span>
-        </div>
-      </div>
-      
-      <div class="blog-post-content">
-        <p>
-          Stochastic Gradient Descent (SGD) is one of the most important algorithms in machine learning,
-          particularly for training neural networks. In this post, we'll explore how SGD works, why it's 
-          so effective, and how you can implement it in your own projects.
-        </p>
-        
-        <h2>What is Gradient Descent?</h2>
-        <p>
-          Gradient descent is an optimization algorithm used to minimize a function by iteratively moving
-          in the direction of the steepest descent as defined by the negative of the gradient. In machine learning,
-          we use it to minimize the loss function of our models.
-        </p>
-        
-        <h2>The "Stochastic" in SGD</h2>
-        <p>
-          While traditional gradient descent computes the gradient using the entire dataset, stochastic gradient
-          descent approximates the gradient using a single sample or a small batch. This makes the algorithm:
-        </p>
-        <ul>
-          <li>Faster per iteration</li>
-          <li>Able to escape some local minima</li>
-          <li>Suitable for online learning scenarios</li>
-          <li>More memory-efficient for large datasets</li>
-        </ul>
-        
-        <h2>Implementing SGD in Python</h2>
-        <p>
-          Here's a simple implementation of SGD in Python using NumPy:
-        </p>
-        <pre><code>
-import numpy as np
+      <section class="blog-post" id="post-1">
+          <a class="back-to-posts">
+              <i data-feather="arrow-left"></i> Back to all posts
+          </a>
 
-def sgd_optimizer(X, y, model, learning_rate=0.01, epochs=100, batch_size=32):
-    losses = []
-    n_samples = X.shape[0]
-    
-    for epoch in range(epochs):
-        # Shuffle the data
-        indices = np.random.permutation(n_samples)
-        X_shuffled = X[indices]
-        y_shuffled = y[indices]
-        
-        # Batch processing
-        for i in range(0, n_samples, batch_size):
-            X_batch = X_shuffled[i:i+batch_size]
-            y_batch = y_shuffled[i:i+batch_size]
-            
-            # Compute gradients
-            gradients = model.compute_gradients(X_batch, y_batch)
-            
-            # Update weights
-            model.update_weights(gradients, learning_rate)
-            
-        # Compute loss for the entire dataset
-        current_loss = model.compute_loss(X, y)
-        losses.append(current_loss)
-        
-        print(f"Epoch {epoch+1}/{epochs}, Loss: {current_loss:.4f}")
-    
-    return losses
-        </code></pre>
-        
-        <h2>Conclusion</h2>
-        <p>
-          Stochastic Gradient Descent is a cornerstone algorithm in modern machine learning.
-          By understanding how it works and its variants, you can improve the training of your models
-          and tackle more complex problems.
-        </p>
-      </div>
-    </section>
-    
-    <section class="blog-post" id="post-2">
+          <h1 class="blog-post-title">Demystifying MCP Servers: The Backbone of Tool-Augmented AI</h1>
+          <div class="blog-post-meta">
+              <div class="post-date">
+                  <i data-feather="calendar"></i>
+                  <span>May 21, 2025</span>
+              </div>
+              <div class="post-tags">
+                  <span>Claude AI</span>
+                  <span>MCP Server</span>
+                  <span>AI Tools</span>
+              </div>
+          </div>
+
+          <div class="blog-post-content">
+              <p>The future of LLMs isn't just about generating text—it's about integrating tools and real-time systems. Meet the <strong>MCP Server</strong>—a modular bridge that connects Claude with real-world APIs like search engines and databases.</p>
+
+              <h2>🔍 What is an MCP Server?</h2>
+              <p>MCP stands for <strong>Modular Command Processor</strong>. It's a thin service layer that listens for tool requests from Claude or any LLM that supports tool use. It then executes external logic (like a web search) and returns the results back to the model.</p>
+
+              <p><em>Source: <a href="https://towardsdatascience.com/how-anthropics-claude-uses-tools-via-apis-e1a816ba1d7" target="_blank">Towards Data Science</a></em></p>
+
+              <h2>🏗 How MCP Architecture Works</h2>
+
+              <ol>
+                  <li>The user sends a query to Claude (via CLI or Web UI).</li>
+                  <li>Claude evaluates the query and decides to use a tool (e.g., web search).</li>
+                  <li>Claude sends a tool-use request to the MCP server with parameters.</li>
+                  <li>MCP routes the request to the appropriate tool logic (like DuckDuckGo API).</li>
+                  <li>The response is returned and Claude continues the conversation with new context.</li>
+              </ol>
+
+              <pre class="bg-gray-100 p-4 rounded-md text-sm overflow-x-auto">
++------------------------+      +--------------------+
+|    Claude Desktop      |      |      Web IDE       |
+| (Host + MCP Client)    |      | (Host + MCP Client)|
++------------------------+      +--------------------+
+             |                         |
+             |     MCP Protocol        |
+             |                         |
+             v                         v
++------------------------+    +---------------------------+
+|   Local Tool Server    |    |     Cloud API Server      |
+| (Exposes tools/resources)|  | (Exposes prompts/tools)   |
++------------------------+    +---------------------------+
+        </pre>
+
+              <p>This architecture allows Claude to simulate reasoning and perform real-time information retrieval while remaining stateless on its own.</p>
+
+
+              <h2>⚙️ Components of This Project</h2>
+              <ul>
+                  <li><strong>claude_mcp_client.py</strong> – Talks to Claude’s API and triggers tool use.</li>
+                  <li><strong>mcp_integration.py</strong> – Contains tool logic (DuckDuckGo, etc.).</li>
+                  <li><strong>mcp_server.py</strong> – Flask server that handles Claude’s tool calls.</li>
+                  <li><strong>ask_claude.py</strong> – CLI based interface to ask questions from claude using mcp_server.py</li>
+                  <li><strong>app.py</strong> – Serves a minimal UI using TailwindCSS. Under development</li>
+              </ul>
+
+              <h2>🧠 Smart Error Handling</h2>
+              <p>Even if Claude's credits are exhausted, the server detects this gracefully and informs the user via CLI and web interface—no crashing or hanging!</p>
+
+              <h2>🚀 Try It Yourself</h2>
+              <p>This project is fully open-source. Run it locally or on cloud platforms like Render or Railway.</p>
+              <p>👉 <a href="https://github.com/naiverahul/claude-search" target="_blank">View the project on GitHub</a></p>
+
+              <h2>📖 Further Reading</h2>
+              <ul>
+                  <li><a href="https://docs.anthropic.com/claude/docs/tool-use" target="_blank">Claude Tool Use Documentation</a></li>
+                  <li><a href="https://developers.duckduckgo.com/" target="_blank">DuckDuckGo Instant Answer API</a></li>
+              </ul>
+          </div>
+      </section>
+
+
+      <section class="blog-post" id="post-2">
       <a class="back-to-posts">
         <i data-feather="arrow-left"></i> Back to all posts
       </a>
@@ -840,7 +846,95 @@ y_multihot = np.array([
               </ul>
           </div>
       </section>
+      <section class="blog-post" id="post-7">
+          <a class="back-to-posts">
+              <i data-feather="arrow-left"></i> Back to all posts
+          </a>
 
+          <h1 class="blog-post-title">Understanding Stochastic Gradient Descent</h1>
+          <div class="blog-post-meta">
+              <div class="post-date">
+                  <i data-feather="calendar"></i>
+                  <span>April 15, 2025</span>
+              </div>
+              <div class="post-tags">
+                  <span>Machine Learning</span>
+                  <span>Neural Networks</span>
+                  <span>Optimization</span>
+              </div>
+          </div>
+
+          <div class="blog-post-content">
+              <p>
+                  Stochastic Gradient Descent (SGD) is one of the most important algorithms in machine learning,
+                  particularly for training neural networks. In this post, we'll explore how SGD works, why it's
+                  so effective, and how you can implement it in your own projects.
+              </p>
+
+              <h2>What is Gradient Descent?</h2>
+              <p>
+                  Gradient descent is an optimization algorithm used to minimize a function by iteratively moving
+                  in the direction of the steepest descent as defined by the negative of the gradient. In machine learning,
+                  we use it to minimize the loss function of our models.
+              </p>
+
+              <h2>The "Stochastic" in SGD</h2>
+              <p>
+                  While traditional gradient descent computes the gradient using the entire dataset, stochastic gradient
+                  descent approximates the gradient using a single sample or a small batch. This makes the algorithm:
+              </p>
+              <ul>
+                  <li>Faster per iteration</li>
+                  <li>Able to escape some local minima</li>
+                  <li>Suitable for online learning scenarios</li>
+                  <li>More memory-efficient for large datasets</li>
+              </ul>
+
+              <h2>Implementing SGD in Python</h2>
+              <p>
+                  Here's a simple implementation of SGD in Python using NumPy:
+              </p>
+              <pre><code>
+import numpy as np
+
+def sgd_optimizer(X, y, model, learning_rate=0.01, epochs=100, batch_size=32):
+    losses = []
+    n_samples = X.shape[0]
+
+    for epoch in range(epochs):
+        # Shuffle the data
+        indices = np.random.permutation(n_samples)
+        X_shuffled = X[indices]
+        y_shuffled = y[indices]
+
+        # Batch processing
+        for i in range(0, n_samples, batch_size):
+            X_batch = X_shuffled[i:i+batch_size]
+            y_batch = y_shuffled[i:i+batch_size]
+
+            # Compute gradients
+            gradients = model.compute_gradients(X_batch, y_batch)
+
+            # Update weights
+            model.update_weights(gradients, learning_rate)
+
+        # Compute loss for the entire dataset
+        current_loss = model.compute_loss(X, y)
+        losses.append(current_loss)
+
+        print(f"Epoch {epoch+1}/{epochs}, Loss: {current_loss:.4f}")
+
+    return losses
+        </code></pre>
+
+              <h2>Conclusion</h2>
+              <p>
+                  Stochastic Gradient Descent is a cornerstone algorithm in modern machine learning.
+                  By understanding how it works and its variants, you can improve the training of your models
+                  and tackle more complex problems.
+              </p>
+          </div>
+      </section>
 
   </main>
 
