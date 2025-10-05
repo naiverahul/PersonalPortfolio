@@ -1,0 +1,18 @@
+<header class="blog-post-header">
+  <h1 class="blog-post-title">Understanding Heaps in Data Structures</h1>
+  <div class="blog-post-meta">
+      <span>May 5, 2025</span> | <span>C++, Data Structures, Interview</span>
+  </div>
+</header>
+<div class="blog-post-content">
+  <p>A <strong>heap</strong> is a specialized binary tree-based data structure that maintains two key properties: <em>shape</em> and <em>heap order</em>. In a <strong>max-heap</strong>, every parent node’s value is greater than or equal to its children, whereas in a <strong>min-heap</strong>, every parent’s value is less than or equal to its children.</p>
+  <h2>Array Representation</h2>
+  <p>Heaps are most efficiently implemented using arrays. With 1-based indexing, the root resides at index <code>1</code>, and for any node at index <code>i</code>:</p>
+  <ul>
+      <li>Parent index: <code>floor(i / 2)</code></li>
+      <li>Left child index: <code>2 * i</code></li>
+      <li>Right child index: <code>2 * i + 1</code></li>
+  </ul>
+  <h2>Heap Sort</h2>
+  <p>Heap sort leverages the heap structure to sort in place with a time complexity of <strong>O(n log n)</strong>.</p>
+</div>

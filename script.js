@@ -1,83 +1,120 @@
 /**
  * Portfolio Website JavaScript
- * Handles animations and interactions
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize skill bar animations
-  animateSkillBars();
-  
-  // Add scroll reveal effect to sections
-  revealOnScroll();
+  feather.replace(); // Initialize Feather icons
+
+  // Page-specific logic
+  if (document.querySelector('.skill-list')) {
+    animateSkillBars();
+  }
+  if (document.getElementById('blog-container')) {
+    handleBlogLogic();
+  }
+
+  revealOnScroll(); // General reveal effect for all sections
 });
 
-/**
- * Animates the skill percentage bars
- */
 function animateSkillBars() {
-  // Get all skill bars
-  const skillBars = document.querySelectorAll('.fill');
-  
-  // Animate each bar to its percentage width
-  skillBars.forEach(el => {
-    const percent = el.getAttribute('data-percent');
-    // Delay animation for a staggered effect
-    setTimeout(() => {
-      el.style.width = percent;
-    }, 300);
-  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        const percent = bar.getAttribute('data-percent');
+        bar.style.width = percent;
+        observer.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.fill').forEach(bar => observer.observe(bar));
 }
 
-/**
- * Reveals sections as user scrolls down
- */
 function revealOnScroll() {
-  // Get all sections
-  const sections = document.querySelectorAll('section');
-  
-  // Create intersection observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      // Add animation class when section is visible
       if (entry.isIntersecting) {
         entry.target.classList.add('revealed');
-        // Stop observing after it's revealed
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.1 // Trigger when 10% of the section is visible
-  });
-  
-  // Start observing each section
-  sections.forEach(section => {
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(section => {
     section.classList.add('reveal-section');
     observer.observe(section);
   });
-  
-  // Add CSS for animations to the document
+
   const style = document.createElement('style');
   style.textContent = `
-    .reveal-section {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    .revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal-section { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .revealed { opacity: 1; transform: translateY(0); }
   `;
   document.head.appendChild(style);
 }
 
-/**
- * Handles mobile navigation menu
- */
-function toggleMobileMenu() {
-  const nav = document.querySelector('nav');
-  if (nav) {
-    nav.classList.toggle('mobile-active');
+function handleBlogLogic() {
+  const listContainer = document.getElementById('post-list-container');
+  const listingSection = document.getElementById('blog-listing');
+  const detailContainer = document.getElementById('post-detail-container');
+  
+  if (typeof blogPosts === 'undefined' || blogPosts.length === 0) {
+    listContainer.innerHTML = "<p>No blog posts found.</p>";
+    return;
   }
+  
+  function displayPostList() {
+    listingSection.style.display = 'block';
+    detailContainer.style.display = 'none';
+    
+    listContainer.innerHTML = blogPosts.map(post => `
+      <article class="post">
+        <div class="post-date"><span>${post.date}</span></div>
+        <h3>${post.title}</h3>
+        <p>${post.description}</p>
+        <div class="post-tags">${post.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
+        <a href="#" class="read-more" data-url="${post.url}">Read more <i data-feather="arrow-right"></i></a>
+      </article>
+    `).join('');
+    
+    feather.replace();
+    
+    document.querySelectorAll('.read-more').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        displayPostDetail(e.currentTarget.getAttribute('data-url'));
+      });
+    });
+  }
+  
+  async function displayPostDetail(url) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Post not found');
+      const postContent = await response.text();
+      
+      detailContainer.innerHTML = `
+        <a class="back-to-posts"><i data-feather="arrow-left"></i> Back to all posts</a>
+        ${postContent}
+      `;
+      
+      listingSection.style.display = 'none';
+      detailContainer.style.display = 'block';
+      
+      feather.replace();
+      window.scrollTo(0, 0);
+      
+      detailContainer.querySelector('.back-to-posts').addEventListener('click', e => {
+        e.preventDefault();
+        displayPostList();
+      });
+      
+    } catch (error) {
+      console.error('Error fetching blog post:', error);
+      detailContainer.innerHTML = "<p>Sorry, this post could not be loaded.</p>";
+    }
+  }
+
+  displayPostList(); 
 }

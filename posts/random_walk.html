@@ -1,0 +1,68 @@
+<header class="blog-post-header">
+    <h1 class="blog-post-title">From a Coin Toss to Neural Networks: The Hidden Link Between Random Walks and Modern Trading</h1>
+    <div class="blog-post-meta">
+        <span>October 5, 2025</span> | <span>Quantitative Finance, Algorithms, Machine Learning</span>
+    </div>
+</header>
+
+<div class="blog-post-content">
+    <img src="../image/random_walk.jpg"
+         alt="Stock market graph illustrating financial data" 
+         class="blog-post-hero-image"> 
+    
+    <p>
+        At the heart of the most complex financial algorithms—powered by machine learning and vast datasets—lies a concept so simple you can simulate it with a coin: the <strong>Random Walk</strong>. It may seem like a world away from today's high-frequency trading, but understanding this foundational idea is the key to unlocking the logic behind the entire evolution of algorithmic trading. In this post, we'll walk that path, from a simple `+1/-1` game to the sophisticated models that drive markets today.
+    </p>
+
+    <h2>Stage 1: The Simple Random Walk - A Market with Amnesia</h2>
+    <p>
+        Imagine a stock price that starts at $100. Each day, it can only do one of two things: go up by $1 or go down by $1, with the flip of a fair coin deciding the direction. This is a <strong>Simple Symmetric Random Walk</strong>. The core assumption is that the next move is completely independent of all past moves. The market has no memory.
+    </p>
+    <div class="math-formula">
+        S<sub>n+1</sub> = S<sub>n</sub> + X<sub>n+1</sub>, where X<sub>n+1</sub> is +1 or -1 with probability p=0.5
+    </div>
+    <p>
+        The <strong>expected change</strong> for any given day is zero, meaning we don't expect the price to go anywhere in particular. This model is the mathematical representation of the <strong>Weak-Form Efficient Market Hypothesis</strong>—the idea that all past price information is useless for predicting the future.
+    </p>
+    <div class="math-formula">
+        E[X] = (1 * p) + (-1 * q) = (1 * 0.5) + (-1 * 0.5) = 0
+    </div>
+
+    <h2>Stage 2: The First Refinement - Introducing Bias and Returns</h2>
+    <p>
+        Our simple model is unrealistic. Let's make two crucial adjustments. First, most markets have a long-term upward trend. The probability of an "up" day isn't exactly 50%. Let's say we analyze data and find `p = 0.55` and `q = 0.45`. Our walk now has a positive bias, or <strong>drift</strong>. The expected change is no longer zero.
+    </p>
+    <div class="math-formula">
+        E[X] = (1 * 0.55) + (-1 * 0.45) = +0.10
+    </div>
+    <p>
+        Second, stock moves aren't fixed at just $1. To normalize this, we switch from absolute changes to <strong>percentage returns</strong>, which measure the move relative to the stock's current price. This allows us to analyze the <strong>distribution</strong> of returns, a cornerstone of quantitative finance.
+    </p>
+    <div class="math-formula">
+        Return = (New Price - Old Price) / Old Price
+    </div>
+
+    <h2>Stage 3: The Leap to Modern Algorithms - Finding Patterns in the Noise</h2>
+    <p>
+        The most significant evolution was the realization that the market might have a <strong>short-term memory</strong>. The probability of the next move might depend on the previous move. This is where we leave the simple random walk behind and enter the world of <strong>time-series analysis</strong>.
+    </p>
+    <div class="math-formula">
+        Key Question: Is P(Up today | Up yesterday) > P(Up today)?
+    </div>
+    <p>
+        Furthermore, the <strong>magnitude</strong> of returns is not random. Big moves tend to be followed by more big moves. This is called <strong>volatility clustering</strong>. Models like <strong>GARCH</strong> capture this by making future volatility dependent on past volatility.
+    </p>
+    <div class="math-formula">
+        Tomorrow's Volatility = f(Today's Volatility, Size of Today's Move)
+    </div>
+
+    <h2>Stage 4: Machine Learning - The Ultimate Pattern Finder</h2>
+    <p>
+        How do we find the optimal parameters for these complex models? Or what if patterns depend on many factors at once? This is where machine learning comes in. An algorithm like <strong>Gradient Descent</strong> is an optimizer that finds the best parameters for a model by minimizing prediction error. It is, in essence, an intelligent "walk" through a high-dimensional space of possible parameters, constantly seeking the lowest point.
+    </p>
+
+    <h2>Conclusion: The Same Path, Just More Dimensions</h2>
+    <p>
+        The journey from a simple coin-toss game to a sophisticated neural network is not one of replacement, but of evolution. We replaced fixed steps with <strong>percentage returns</strong>, a single probability with <strong>adaptive, conditional probabilities</strong>, and a simple walk on a number line with an intelligent walk through a high-dimensional space of model parameters. The core idea remains the same: analyze a sequence of steps to predict the most likely direction of the next one.
+    </p>
+</div>

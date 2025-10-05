@@ -1,0 +1,22 @@
+<header class="blog-post-header">
+  <h1 class="blog-post-title">Demystifying MCP Servers: The Backbone of Tool-Augmented AI</h1>
+  <div class="blog-post-meta">
+    <span>May 21, 2025</span> | <span>Claude AI, MCP Server, AI Tools</span>
+  </div>
+</header>
+<div class="blog-post-content">
+  <p>The future of LLMs isn't just about generating text—it's about integrating tools and real-time systems. Meet the <strong>MCP Server</strong>—a modular bridge that connects Claude with real-world APIs like search engines and databases.</p>
+  <h2>What is an MCP Server?</h2>
+  <p>MCP stands for <strong>Modular Command Processor</strong>. It's a thin service layer that listens for tool requests from Claude or any LLM that supports tool use. It then executes external logic (like a web search) and returns the results back to the model.</p>
+  <h2>How MCP Architecture Works</h2>
+  <ol>
+      <li>The user sends a query to Claude (via CLI or Web UI).</li>
+      <li>Claude evaluates the query and decides to use a tool (e.g., web search).</li>
+      <li>Claude sends a tool-use request to the MCP server with parameters.</li>
+      <li>MCP routes the request to the appropriate tool logic (like DuckDuckGo API).</li>
+      <li>The response is returned and Claude continues the conversation with new context.</li>
+  </ol>
+  <p>This architecture allows Claude to simulate reasoning and perform real-time information retrieval while remaining stateless on its own.</p>
+  <h2>Try It Yourself</h2>
+  <p>This project is fully open-source. 👉 <a href="https://github.com/naiverahul/claude-search" target="_blank">View the project on GitHub</a></p>
+</div>
